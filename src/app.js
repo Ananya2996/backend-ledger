@@ -17,6 +17,16 @@ const accountRouter=require("./routes/account.routes")
 // explicit .js extension avoids accidentally loading a stray file without one
 const transactionRoutes=require("./routes/transaction.routes.js")
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "Backend Ledger API is running! 🚀",
+    routes: {
+      auth: "/api/auth",
+      accounts: "/api/accounts",
+      transactions: "/api/transactions"
+    }
+  })
+})
 app.use("/api/auth",authRouter)
 app.use("/api/accounts", accountRouter)
 app.use("/api/transactions", transactionRoutes)
