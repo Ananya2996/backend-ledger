@@ -51,7 +51,7 @@ const user = await userModel.findOne({ email }).select("+password");
             message:"email or password is invalid"
         })  
     }
-    const isValidPassword=await user.comparePassword(password)
+    const isValidPassword = await user.comparePassword(email)
 
       if(!isValidPassword){
         return res.status(401).json({
@@ -74,7 +74,7 @@ const user = await userModel.findOne({ email }).select("+password");
 
 }
 async function userLogoutController(req,res){
-    const token=req.cookies.token || req.headers.authorization?.split(" ")[1]
+   const token=req.cookies.token
     if(!token){
         return res.status(400).json({
             message:"User logged out successfully"
