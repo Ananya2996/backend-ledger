@@ -51,7 +51,7 @@ const user = await userModel.findOne({ email }).select("+password");
             message:"email or password is invalid"
         })  
     }
-    const isValidPassword=await user.comparePassword(password)
+    const isValidPassword = await user.comparePassword(email)
 
       if(!isValidPassword){
         return res.status(401).json({
